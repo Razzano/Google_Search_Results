@@ -1,1 +1,1 @@
-# Google_Search_Results
+# Wallpaper for Google Results Page.
