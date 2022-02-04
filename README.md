@@ -1,1 +1,1 @@
-# Wallpaper for Google Results Page.
+Wallpaper for Google Results Page.
