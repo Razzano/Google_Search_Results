@@ -34,7 +34,7 @@
         divThemer = $c('div', {id: 'themerDiv'}),
         btnThemer = $c('button', {id: 'buttonThemer', innerHTML: wallpaperImageText, title: changeWallpaperTooltip, onclick: e => wallpaperButtonChanger(e)}),
         btnUp = $c('input', {id: 'buttonUp', type: 'image', src: upButton, title: '', onclick: e => wallpaperButtonChanger(e)}),
-        inpThemer = $c('input', {id: 'inputThemer', type: 'number', min: 0, max: 31, value: GM_getValue('wallpaperImage'), oninput: e => wallpaperInputChanger(e)}),
+        inpThemer = $c('input', {id: 'inputThemer', type: 'number', min: 0, max: 35, value: GM_getValue('wallpaperImage'), oninput: e => wallpaperInputChanger(e)}),
         btnDown = $c('input', {id: 'buttonDown', type: 'image', src: downButton, title: '', onclick: e => wallpaperButtonChanger(e)});
 
   let initInterval;
@@ -69,10 +69,10 @@
     let num = GM_getValue('wallpaperImage');
     switch (e.target.id) {
       case 'buttonThemer': case 'buttonUp':
-        num > 30 ? num = 0 : num = parseInt(num + 1);
+        num > 34 ? num = 0 : num = parseInt(num + 1);
         break;
       case 'buttonDown':
-        num < 1 ? num = 31 : num = parseInt(num - 1);
+        num < 1 ? num = 35 : num = parseInt(num - 1);
         break;
     }
     inpThemer.value = num;
