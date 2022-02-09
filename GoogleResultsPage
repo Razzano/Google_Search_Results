@@ -218,7 +218,8 @@
     'body#gsr #main .osrp-blk,'+
     'body#gsr #main .g.VjDLd.mnr-c.g-blk > div {'+
     '  background: rgba(0, 0, 0, .5) !important;'+
-    '  padding: 0 8px !important;'+
+    '  margin: 0 0 0 172px !important;'+
+    '  padding: 0 0 0 8px !important;'+
     '}'+
     'body#gsr > #searchform {'+
     '  margin-top: 0 !important;'+
@@ -257,9 +258,12 @@
     'body#gsr #searchform > div > div {'+
     '  background: rgba(0, 0, 0, .5) !important;'+
     '  border-radius: 24px !important;'+
-    '  padding: 0 8px 4px 8px !important;'+
+    '  padding: 0 0 4px 8px !important;'+
     '}'+
-    'body#gsr #gb > div > div[style] {'+
+    'body#gsr .gb_Td.gb_Va.gb_Id {'+
+    '  margin-right: -8px !important;'+
+    '}'+
+    'body#gsr #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+
     '}'+
   '');
