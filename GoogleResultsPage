@@ -29,7 +29,7 @@
         body = $q('body#gsr'),
         signIn = $q('body#gsr a.gb_1.gb_2'),
         headerMenus = $q('body#gsr div.Q3DXx.yIbDgf > div.Q3DXx'),
-        div6 = $c('div', {id: 'divSites'}),
+        divSites = $c('div', {id: 'divSites'}),
         spnSites = $c('button', {id: 'spanSites', title: buttonSitesTooltip, onclick: () => wallpaperSite()}),
         btnSites = $c('button', {id: 'buttonSites', title: buttonSitesTooltip, onclick: () => wallpaperSite()}),
         divThemer = $c('div', {id: 'themerDiv'}),
@@ -111,14 +111,14 @@
   initInterval = setInterval(() => {
     try {
       spnSites.innerHTML = changeImageSiteText;
-      div6.appendChild(spnSites);
-      div6.appendChild(btnSites);
+      divSites.appendChild(spnSites);
+      divSites.appendChild(btnSites);
       divThemer.appendChild(btnThemer);
       divThemer.appendChild(inpThemer);
       divThemer.appendChild(btnUp);
       divThemer.appendChild(btnDown);
       headerMenus.insertBefore(divThemer, headerMenus.firstChild);
-      headerMenus.insertBefore(div6, headerMenus.firstChild);
+      headerMenus.insertBefore(divSites, headerMenus.firstChild);
       if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
       else btnSites.innerHTML = 'Sonco';
       if (signIn) signIn.click();
@@ -251,10 +251,15 @@
     'body#gsr .sfbg,'+
     'body#gsr #pTwnEc,'+
     'body#gsr .appbar,'+
-    'body#gsr #searchform div:last-of-type {'+
+    'body#gsr #searchform div:last-of-type:not(.Q3DXx) {'+
     '  background: transparent !important;'+
     '}'+
-    'body#gsr #gb > div > div:nth-child(3) {'+
+    'body#gsr #searchform > div > div {'+
+    '  background: rgba(0, 0, 0, .5) !important;'+
+    '  border-radius: 24px !important;'+
+    '  padding: 0 8px 4px 8px !important;'+
+    '}'+
+    'body#gsr #gb > div > div[style] {'+
     '  height: calc(-140px + 100vh) !important;'+
     '}'+
   '');
