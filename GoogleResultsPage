@@ -338,7 +338,7 @@
     'body#gsr #divSites {'+
     '  margin-right: 25px !important;'+
     '  position: relative !important;'+
-    '  top: 15px !important;'+
+    '  top: 16px !important;'+
     '}'+
     'body#gsr #spanSites,'+
     'body#gsr #buttonSites {'+
@@ -357,7 +357,7 @@
     '}'+
     'body#gsr #themerDiv {'+
     '  color: #FFF !important;'+
-    '  margin: 8px 16px 0 0 !important;'+
+    '  margin: 9px 16px 0 0 !important;'+
     '  position: relative !important;'+
     '  z-index: 999 !important;'+
     '}'+
