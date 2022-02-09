@@ -403,7 +403,7 @@
     'body#gsr #main .g.VjDLd.mnr-c.g-blk > div {'+
     '  background: rgba(0, 0, 0, .5) !important;'+
     '  margin: 0 0 0 172px !important;'+
-    '  padding: 0 0 0 8px !important;'+
+    '  padding: 0 8px !important;'+
     '}'+
     'body#gsr > #searchform {'+
     '  margin-top: 0 !important;'+
