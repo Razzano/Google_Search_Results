@@ -269,29 +269,59 @@
     'body#gsr {'+
     '  background:  url('+ googleImage +') no-repeat center 10px fixed, url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) no-repeat center center fixed !important;'+
     '}'+
-    '#dateTimeContainer {'+
+    'body#gsr #dateTimeContainer {'+
     '  border: none !important;'+
     '  margin-right: 8px !important;'+
     '  position: relative !important;'+
     '  z-index: 999 !important;'+
     '}'+
-    '#gClock {'+
+    'body#gsr #gClock {'+
     '  border: none !important;'+
+    '  cursor: pointer !important;'+
+    '  filter: grayscale(1) brightness(.65) !important;'+
     '  height: 40px !important;'+
     '  margin-top: 4px !important;'+
     '  width: 40px !important;'+
     '}'+
-    '#dateTime {'+
+    'body#gsr #dateTime {'+
     '  margin: 0 8px !important;'+
     '  position: relative !important;'+
-    '  top: -15px !important;'+
+    '  top: -14px !important;'+
+    '}'+
+    'body#gsr #gClock:hover + #dateTime {'+
+    '  background: #900 !important;'+
+    '  border-color: #C00 !important;'+
+    '  color: #FFF !important;'+
+    '}'+
+    'body#gsr #dateTimeContainer:hover > #gClock {'+
+    '  filter: none !important;'+
+    '  opacity: .7 !important;'+
+    '}'+
+    'body#gsr #dateTimeContainer:hover > #gClock:hover {'+
+    '  opacity: 1 !important;'+
+    '}'+
+    'body#gsr #dateTimeContainer > #dateTime {'+
+    '  background-color: transparent !important;'+
+    '  border: 1px solid transparent !important;'+
+    '  border-radius: 4px !important;'+
+    '  box-shadow: none !important;'+
+    '  color: #FFF !important;'+
+    '  cursor: pointer !important;'+
+    '  font: 16px monospace !important;'+
+    '  min-width: 100px !important;'+
+    '  padding: 5px 8px 6px 8px !important;'+
+    '  text-shadow: 1px 1px 2px #000 !important;'+
+    '}'+
+    'body#gsr #dateTimeContainer > #dateTime:hover {'+
+    '  background-color: #181A1B !important;'+
+    '  border: 1px solid #000 !important;'+
     '}'+
     'body#gsr #gbwa > div > a:hover {'+
     '  background-color: #181A1B !important;'+
     '  border: 1px solid #333 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '.gb_Aa {'+
+    'body#gsr .gb_Aa {'+
     '  height: 40px !important;'+
     '  position: relative !important;'+
     '  top: -4px !important;'+
