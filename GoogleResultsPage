@@ -472,6 +472,10 @@
     '  background: #333 !important;'+
     '  color: #FFF !important;'+
     '}'+
+    'body#gsr .GLcBOb.cCvmNd .Lj8KXd {'+
+    '  background-color: transparent !important;'+
+     '  border-bottom: none !important;'+
+    '}'+
   '');
 
 })();
