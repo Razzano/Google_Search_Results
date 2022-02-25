@@ -244,8 +244,6 @@
       dateTimeContainer.appendChild(btnClock);
       dateTimeContainer.appendChild(dateTime);
       div1.appendChild(dateTimeContainer);
-      if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
-      else {dateTime.hidden = true; clearInterval(clockInterval)}
       dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
       spnSites.innerHTML = changeImageSiteText;
       divSites.appendChild(spnSites);
@@ -256,6 +254,8 @@
       divThemer.appendChild(btnDown);
       headerMenus.insertBefore(divThemer, headerMenus.firstChild);
       headerMenus.insertBefore(divSites, headerMenus.firstChild);
+      if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
+      else {dateTime.hidden = true; clearInterval(clockInterval)}
       if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
       else btnSites.innerHTML = 'Sonco';
       if (signIn) signIn.click();
@@ -402,7 +402,6 @@
     'body#gsr #main .osrp-blk,'+
     'body#gsr #main .g.VjDLd.mnr-c.g-blk > div {'+
     '  background: rgba(0, 0, 0, .5) !important;'+
-    '  margin: 0 0 0 172px !important;'+
     '  padding: 0 8px !important;'+
     '}'+
     'body#gsr > #searchform {'+
@@ -412,8 +411,9 @@
     'body#gsr .dodTBe {'+
     '  height: 25px !important;'+
     '}'+
+    'body#gsr form .RNNXgb,'+
     'body#gsr .minidiv .RNNXgb {'+
-    '  border-radius: 24px !important;'+
+    '  border-radius: 0 24px 24px 0 !important;'+
     '}'+
     'body#gsr .minidiv .ExCKkf {'+
     '  width: 24px !important;'+
@@ -449,6 +449,18 @@
     '}'+
     'body#gsr #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+
+    '}'+
+    'body#gsr .GCSyeb {'+
+    '  background: none !important;'+
+    '}'+
+    'body#gsr .A8SBwf {'+
+    '  margin: 0 !important;'+
+    '  padding: 0 !important;'+
+    '}'+
+    'body#gsr .MUFPAc,'+
+    'body#gsr .M8OgIe,'+
+    'body#gsr .s6JM6d {'+
+    '  margin-left: 0 !important;'+
     '}'+
   '');
 
