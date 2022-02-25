@@ -483,6 +483,13 @@
     '  background-color: transparent !important;'+
      '  border-bottom: none !important;'+
     '}'+
+    'body#gsr span.REySof,'+
+    'body#gsr span.NQyKp {'+
+    '  background: none !important;'+
+    '}'+
+    'body#gsr span.NQyKp.Maj6Tc {'+
+    '  background: #333 !important;'+
+    '}'+
   '');
 
 })();
