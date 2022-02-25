@@ -457,10 +457,18 @@
     '  margin: 0 !important;'+
     '  padding: 0 !important;'+
     '}'+
+    'body#gsr .GLcBOb {'+
+    '  margin-top: 0 !important;'+
+    '}'+
     'body#gsr .MUFPAc,'+
     'body#gsr .M8OgIe,'+
     'body#gsr .s6JM6d {'+
     '  margin-left: 0 !important;'+
+    '}'+
+    'body#gsr  #hdtb-tls:hover,'+
+    'body#gsr .MUFPAc a:hover,'+
+    'body#gsr .MUFPAc .GOE98c:hover {'+
+    '  background: #333 !important;'+
     '}'+
   '');
 
