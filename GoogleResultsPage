@@ -465,10 +465,12 @@
     'body#gsr .s6JM6d {'+
     '  margin-left: 0 !important;'+
     '}'+
+    'body#gsr .t2vtad.hdtb-tl-sel,'+
     'body#gsr  #hdtb-tls:hover,'+
     'body#gsr .MUFPAc a:hover,'+
     'body#gsr .MUFPAc .GOE98c:hover {'+
     '  background: #333 !important;'+
+    '  color: #FFF !important;'+
     '}'+
   '');
 
