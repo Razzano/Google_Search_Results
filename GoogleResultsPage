@@ -398,13 +398,30 @@
     'body#gsr #inputThemer::-webkit-outer-spin-button {'+
     '  display: none !important;'+
     '}'+
-    'body#gsr #center_col,'+
-    'body#gsr #rhs > div {'+
+    'body#gsr #center_col {'+
     '  background: rgba(0, 0, 0, .5) !important;'+
     '  padding: 0 8px !important;'+
     '}'+
     'body#gsr #center_col {'+
     '  border: 1px solid #999 !important;'+
+    '}'+
+    'body#gsr #rhs > div {'+
+    '  background: rgba(0, 0, 0, .5) !important;'+
+    '  border-left: 1px solid #999 !important;'+
+    '  border-right: 1px solid #999 !important;'+
+    '  padding: 0 8px !important;'+
+    '}'+
+    'body#gsr #rhsads {'+
+    '  border: none !important;'+
+    '}'+
+    'body#gsr #rhsads + div {'+
+    '  border-top: 1px solid #999 !important;'+
+    '  margin-top: 0 !important;'+
+    '  padding-top: 8px !important;'+
+    '}'+
+    'body#gsr #rhs > div:last-of-type {'+
+    '  border-bottom: 1px solid #999 !important;'+
+    '  padding-bottom: 8px !important;'+
     '}'+
     'body#gsr .IVvPP .cLjAic.WY0eLb,'+
     'body#gsr .Hwkikb.WY0eLb {'+
