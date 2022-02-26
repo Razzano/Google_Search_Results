@@ -424,18 +424,24 @@
     'body#gsr .minidiv .RNNXgb {'+
     '  border: none !important;'+
     '  margin-top: 0 !important;'+
-    '  padding: 6px 0 !important;'+
+    '  height: 46px !important;'+
     '  width: 696px 0 !important;'+
     '}'+
-    '.minidiv .Tg7LZd svg {'+
+    'body#gsr .minidiv .Tg7LZd svg {'+
     '  height: 24px !important;'+
     '  width: 24px !important;'+
+    '}'+
+    'body#gsr .CvDJxb.minidiv .Tg7LZd {'+
+    '  margin-top: 4px !important;'+
     '}'+
     'body#gsr .gXmnc {'+
     '  margin-left: 170px !important;'+
     '}'+
     'body#gsr .minidiv .gsfi {'+
     '  font-size: 16px !important;'+
+    '}'+
+    'body#gsr #rhs {'+
+    '  margin: 0 0 0 32px !important;'+
     '}'+
     'body#gsr #hdtb {'+
     '  border: none !important;'+
@@ -481,7 +487,7 @@
     '}'+
     'body#gsr .GLcBOb.cCvmNd .Lj8KXd {'+
     '  background-color: transparent !important;'+
-     '  border-bottom: none !important;'+
+    '  border-bottom: none !important;'+
     '}'+
     'body#gsr span.REySof,'+
     'body#gsr span.NQyKp {'+
@@ -489,6 +495,7 @@
     '}'+
     'body#gsr span.NQyKp.Maj6Tc {'+
     '  background: #333 !important;'+
+    '  border: none !important;'+
     '}'+
   '');
 
