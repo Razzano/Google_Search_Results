@@ -372,6 +372,8 @@
     '  opacity: .7 !important;'+
     '}'+
     '#gsr #inputThemer {'+
+    '  appearance: textfield !important;'+
+    '  -moz-appearance: textfield !important;'+
     '  opacity: .8 !important;'+
     '  text-align: center !important;'+
     '  width: 28px !important;'+
