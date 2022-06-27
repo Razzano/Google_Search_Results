@@ -418,6 +418,7 @@
     '}'+
     'body#gsr #rcnt {'+
     '  background: radial-gradient(#000, transparent) !important;'+
+    '  max-width: 1400px !important;'+
     '}'+
     'body#gsr #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+
