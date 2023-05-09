@@ -21,6 +21,8 @@
         am = 'AM',
         pm = 'PM',
         bullet = '•',
+        calendar = '📆',
+        clock = '🕑',
         comma = ',',
         hyphen = '-',
         slash = '/',
@@ -121,8 +123,8 @@
     if (GM_getValue('defaultAMPM')) hr < 12 ? ampm = am : ampm = pm;
     else ampm = '';
     switch (int) {
-      // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm) special characters: bullet, comma, hyphen, slash, space, star
-      case 1: return ww + space + bullet + space + mmmm + space + ddd + comma + space + yyyy + space + star + space + hr12 + min + sec + space + ampm; // Sunday • March 1??, 2021 ? 12:34 AM
+      // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm) special characters: bullet, calendar, clock, comma, hyphen, slash, space, star
+      case 1: return ww + space + calendar + space + mmmm + space + ddd + comma + space + yyyy + space + clock + space + hr12 + min + sec + space + ampm; // Sunday • March 1??, 2021 ? 12:34 AM
       case 2: return w + space + bullet + space + mmm + space + d + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
       case 3: return w + space + bullet + space + mmm + space + dd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
       case 4: return w + space + bullet + space + m + hyphen + d + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3-1-2021 • 12:34 AM
@@ -130,8 +132,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 133;
-      case 9: return customFormat + 134;
+      case 8: return customFormat + 135;
+      case 9: return customFormat + 136;
   } }
 
   function dateTimeDefault() {
@@ -187,7 +189,8 @@
     } else {
       GM_addStyle(''+
         'body#gsr {'+
-        '  background:  url('+ googleImage +') no-repeat center 10px fixed, url('+ GM_getValue('imageSite') + e +'.jpg) center center / cover no-repeat fixed !important;'+
+        //'  background: url('+ googleImage +') no-repeat center 10px fixed, url('+ GM_getValue('imageSite') + e +'.jpg) center center / cover no-repeat fixed !important;'+
+        '  background: url('+ GM_getValue('imageSite') + e +'.jpg) center center / cover no-repeat fixed !important;'+
         '}'+
       '');
   } }
@@ -267,7 +270,11 @@
 
   GM_addStyle(''+
     'body#gsr {'+
-    '  background:  url('+ googleImage +') no-repeat center 10px fixed, url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) center center / cover no-repeat fixed !important;'+
+    /*'  background: url('+ googleImage +') no-repeat center 10px fixed, url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) center center / cover no-repeat fixed !important;'+*/
+    '  background: url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) center center / cover no-repeat fixed !important;'+
+    '}'+
+    'body#gsr .sBbkle {'+
+    '  border: none !important;'+
     '}'+
     'body#gsr #dateTimeContainer {'+
     '  border: none !important;'+
@@ -417,10 +424,20 @@
     '  border-bottom: none !important;'+
     '}'+
     'body#gsr #rcnt {'+
-    '  background: radial-gradient(#000, transparent) !important;'+
+    /*'  background: radial-gradient(#000, transparent) !important;'+*/
+    '  background: rgba(0, 0, 0, .5) !important;'+
+    '  border-radius: 0 20px 0 0 !important;'+
     '}'+
     'body#gsr #gb > div > div[style*="width: 328px;"] {'+
-    '  height: calc(-140px + 100vh) !important;'+
+    '  height: calc(-86px + 100vh) !important;'+
+    '}'+
+    'body#gsr #appbar {'+
+    '  border: none !important;'+
+    '  margin-left: -20px !important;'+
+    '}'+
+    'body#gsr #rcnt,'+
+    'body#gsr #tsf {'+
+    '  margin-left: -20px !important;'+
     '}'+
   '');
 
