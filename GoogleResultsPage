@@ -439,6 +439,10 @@
     'body#gsr #tsf {'+
     '  margin-left: -20px !important;'+
     '}'+
+    'body#gsr .Q3DXx {'+
+    '  background: #333 !important;'+
+    '  padding: 0 !important;'+
+    '}'+
   '');
 
 })();
