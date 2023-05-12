@@ -443,6 +443,9 @@
     '  background: #333 !important;'+
     '  padding: 0 !important;'+
     '}'+
+    'body#gsr .qe1Dgc.OsZ04d {'+
+    '  border-radius: 12px 0 0 12px !important;'+
+    '}'+
   '');
 
 })();
