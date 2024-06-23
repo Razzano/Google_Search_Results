@@ -4,7 +4,7 @@
 // @version      1.0.1
 // @description  Layout and Theme
 // @author       Sonny Razzano a.k.a. srazzano
-// @match        https://*.google.com/search*
+// @match        https://*.google.com/*
 // @icon         https://raw.githubusercontent.com/srazzano/Images/master/googleicon64.png
 // @grant        GM_addStyle
 // @grant        GM_getValue
@@ -48,7 +48,6 @@
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
         githubSite = 'https://raw.githubusercontent.com/srazzano/Images/master/image',
-        soncoSite = 'https://sonco.synthasite.com/resources/image',
         openInterval = 20,
         wallpaperImageText = 'Wallpaper image',
         changeWallpaperTooltip = 'Change Wallpaper',
@@ -60,9 +59,8 @@
         downButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAuklEQVR42mNkoAFgHDWUPob+BwJGICCkGZc6XIamAamZ+AwGGQik0oFKZhFrKEj8LRALYjMYauB7IBYGSv8nOkyB+jyA1HawIiSDoQaCgCdQeAfRYYpkwBkgZQwzGMnAs0CuCS59hAzVB1JzYQbDDATiZKChF8kyFGrwSiAVhiS0CmhgOD49xBgqCaSuArEgAyRytIGGPqfIUKjB7UCqAog7gAZWElJPdI4CGrwfaKAjMWqHeN4fOYYCALmCRxW5rmXrAAAAAElFTkSuQmCC',
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
         body = $q('body#gsr'),
-        div1 = $q('body#gsr div.Q3DXx.yIbDgf > div'),
         signIn = $q('body#gsr a.gb_1.gb_2'),
-        headerMenus = $q('body#gsr div.Q3DXx.yIbDgf > div.Q3DXx'),
+        headerMenus = $q('body#gsr div.Q3DXx'),
         dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
         btnClock = $c('button', {id: 'gClock', style: 'background: url('+ imgClock +') no-repeat center', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
         dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
@@ -130,8 +128,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 133;
-      case 9: return customFormat + 134;
+      case 8: return customFormat + 131;
+      case 9: return customFormat + 132;
   } }
 
   function dateTimeDefault() {
@@ -215,19 +213,13 @@
   }
 
   function wallpaperSite() {
-    let num = GM_getValue('wallpaperImage'),
-        str = GM_getValue('imageSite');
-    if (str === githubSite) {
-      GM_setValue('imageSite', soncoSite);
-      btnSites.innerHTML = 'Sonco';
-    } else {
-      GM_setValue('imageSite', githubSite);
-      btnSites.innerHTML = 'GitHub';
-    }
+    let num = GM_getValue('wallpaperImage');
+    GM_setValue('imageSite', githubSite);
+    btnSites.innerHTML = 'GitHub';
     wallpaper(num);
   }
 
-  function whenClose() {
+ function whenClose() {
     clearInterval(initInterval);
     clearInterval(clockInterval);
     window.removeEventListener('unload', () => whenClose());
@@ -244,7 +236,7 @@
     try {
       dateTimeContainer.appendChild(btnClock);
       dateTimeContainer.appendChild(dateTime);
-      div1.appendChild(dateTimeContainer);
+      body.insertBefore(dateTimeContainer, body.firstChild);
       if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
       else {dateTime.hidden = true; clearInterval(clockInterval)}
       dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
@@ -255,8 +247,7 @@
       divThemer.appendChild(btnUp);
       divThemer.appendChild(inpThemer);
       divThemer.appendChild(btnDown);
-      headerMenus.insertBefore(divThemer, headerMenus.firstChild);
-      headerMenus.insertBefore(divSites, headerMenus.firstChild);
+      body.insertBefore(divThemer, body.firstChild);
       if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
       else btnSites.innerHTML = 'Sonco';
       if (signIn) signIn.click();
@@ -268,14 +259,13 @@
 
   GM_addStyle(''+
     'body#gsr {'+
-    /*'  background:  url('+ googleImage +') no-repeat center 10px fixed, url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) no-repeat center center fixed !important;'+*/
     '  background:  url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) no-repeat center center fixed !important;'+
     '}'+
     'body#gsr #dateTimeContainer {'+
-    '  border: none !important;'+
-    '  margin-right: 8px !important;'+
     '  position: relative !important;'+
     '  z-index: 999 !important;'+
+    '  margin-left: 50% !important;'+
+    '  top: -26px !important;'+
     '}'+
     'body#gsr #gClock {'+
     '  border: none !important;'+
@@ -359,8 +349,8 @@
     '}'+
     'body#gsr #themerDiv {'+
     '  color: #FFF !important;'+
-    '  margin: 9px 16px 0 0 !important;'+
     '  position: relative !important;'+
+    '  top: 7px !important;'+
     '  z-index: 999 !important;'+
     '}'+
     'body#gsr #buttonThemer,'+
@@ -423,6 +413,10 @@
     '}'+
     'body#gsr #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+
+    '}'+
+    'body#gsr div.dodTBe {'+
+    '  height: auto !important;'+
+    '  min-height: 0 !important;'+
     '}'+
   '');
 
