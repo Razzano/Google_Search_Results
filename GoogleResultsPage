@@ -266,6 +266,7 @@
     '  z-index: 999 !important;'+
     '  margin-left: 50% !important;'+
     '  top: -26px !important;'+
+    '  width: 450px !important;'+
     '}'+
     'body#gsr #gClock {'+
     '  border: none !important;'+
@@ -351,6 +352,7 @@
     '  color: #FFF !important;'+
     '  position: relative !important;'+
     '  top: 7px !important;'+
+    '  width: 210px !important;'+
     '  z-index: 999 !important;'+
     '}'+
     'body#gsr #buttonThemer,'+
