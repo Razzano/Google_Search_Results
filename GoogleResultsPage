@@ -4,7 +4,7 @@
 // @version      1.0.1
 // @description  Layout and Theme
 // @author       Sonny Razzano a.k.a. srazzano
-// @match        https://*.google.com/*
+// @match        https://*.google.com/search*
 // @icon         https://raw.githubusercontent.com/srazzano/Images/master/googleicon64.png
 // @grant        GM_addStyle
 // @grant        GM_getValue
@@ -15,7 +15,8 @@
 
   'use strict';
 
-  const timerLong = 10000,
+  const openInterval = 1000,
+        timerLong = 10000,
         timerShort = 1000,
         dateTimeFormatCount = 9,
         am = 'AM',
@@ -48,7 +49,6 @@
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
         githubSite = 'https://raw.githubusercontent.com/srazzano/Images/master/image',
-        openInterval = 20,
         wallpaperImageText = 'Wallpaper image',
         changeWallpaperTooltip = 'Change Wallpaper',
         inputTooltip = '0 - 35',
@@ -175,6 +175,12 @@
     dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
   }
 
+  function init() {
+  try {
+   
+    } catch(ex) {}
+  }
+
   function wallpaper(e) {
     if (e === 0) {
       GM_addStyle(''+
@@ -185,8 +191,9 @@
     } else {
       GM_addStyle(''+
         'body#gsr {'+
-        /*'  background:  url('+ googleImage +') no-repeat center 10px fixed, url('+ GM_getValue('imageSite') + e +'.jpg) no-repeat center center fixed !important;'+*/
-        '  background:  url('+ GM_getValue('imageSite') + e +'.jpg) no-repeat center center fixed !important;'+
+        //'  background:  url('+ googleImage +') no-repeat center 10px fixed, url('+ GM_getValue('imageSite') + e +'.jpg) no-repeat center center fixed !important;'+
+        //'  background:  url('+ GM_getValue('imageSite') + e +'.jpg) no-repeat center center fixed !important;'+
+        '  background:  url('+ GM_getValue('imageSite') + e +'.jpg) no-repeat center / cover fixed !important;'+
         '}'+
       '');
   } }
@@ -233,7 +240,7 @@
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
 
   initInterval = setInterval(() => {
-    try {
+    //try {
       dateTimeContainer.appendChild(btnClock);
       dateTimeContainer.appendChild(dateTime);
       body.insertBefore(dateTimeContainer, body.firstChild);
@@ -252,21 +259,22 @@
       else btnSites.innerHTML = 'Sonco';
       if (signIn) signIn.click();
       else clearInterval(initInterval);
-    } catch(ex) {}
+    //} catch(ex) {}
   }, openInterval);
 
   window.addEventListener('unload', () => whenClose());
 
   GM_addStyle(''+
     'body#gsr {'+
-    '  background:  url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) no-repeat center center fixed !important;'+
+    /*'  background:  url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) no-repeat center center fixed !important;'+*/
+    '  background:  url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) no-repeat center / cover fixed !important;'+
     '}'+
     'body#gsr #dateTimeContainer {'+
     '  position: relative !important;'+
-    '  z-index: 999 !important;'+
-    '  margin-left: 50% !important;'+
+    '  right: -70% !important;'+
     '  top: -26px !important;'+
     '  width: 450px !important;'+
+    '  z-index: 999 !important;'+
     '}'+
     'body#gsr #gClock {'+
     '  border: none !important;'+
@@ -351,6 +359,7 @@
     'body#gsr #themerDiv {'+
     '  color: #FFF !important;'+
     '  position: relative !important;'+
+    '  right: -58% !important;'+
     '  top: 7px !important;'+
     '  width: 210px !important;'+
     '  z-index: 999 !important;'+
@@ -367,6 +376,7 @@
     '}'+
     'body#gsr #inputThemer {'+
     '  opacity: .8 !important;'+
+    '  pointer-events: none !important;'+
     '  text-align: center !important;'+
     '  width: 28px !important;'+
     '}'+
