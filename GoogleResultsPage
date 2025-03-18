@@ -48,7 +48,7 @@
         daynum = DayNum.split(','),
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
-        githubSite = 'https://raw.githubusercontent.com/srazzano/Images/master/image',
+        //githubSite = 'https://raw.githubusercontent.com/Razzano/MyWallpaper/master/image',
         wallpaperImageText = 'Wallpaper image',
         changeWallpaperTooltip = 'Change Wallpaper',
         inputTooltip = '0 - 35',
@@ -70,7 +70,7 @@
         divThemer = $c('div', {id: 'themerDiv'}),
         btnThemer = $c('button', {id: 'buttonThemer', innerHTML: wallpaperImageText, title: changeWallpaperTooltip, onclick: e => wallpaperButtonChanger(e)}),
         btnUp = $c('input', {id: 'buttonUp', type: 'image', src: upButton, title: '', onclick: e => wallpaperButtonChanger(e)}),
-        inpThemer = $c('input', {id: 'inputThemer', type: 'number', min: 0, max: 35, value: GM_getValue('wallpaperImage'), title: inputTooltip, oninput: e => wallpaperInputChanger(e)}),
+        inpThemer = $c('input', {id: 'inputThemer', type: 'number', min: 0, max: 43, value: GM_getValue('wallpaperImage'), title: inputTooltip, oninput: e => wallpaperInputChanger(e)}),
         btnDown = $c('input', {id: 'buttonDown', type: 'image', src: downButton, title: '', onclick: e => wallpaperButtonChanger(e)});
 
   let initInterval,
@@ -177,7 +177,7 @@
 
   function init() {
   try {
-   
+
     } catch(ex) {}
   }
 
@@ -193,36 +193,44 @@
         'body#gsr {'+
         //'  background:  url('+ googleImage +') no-repeat center 10px fixed, url('+ GM_getValue('imageSite') + e +'.jpg) no-repeat center center fixed !important;'+
         //'  background:  url('+ GM_getValue('imageSite') + e +'.jpg) no-repeat center center fixed !important;'+
-        '  background:  url('+ GM_getValue('imageSite') + e +'.jpg) no-repeat center / cover fixed !important;'+
+        '  background:  url(https://raw.githubusercontent.com/Razzano/MyWallpaper/master/image' + e +'.jpg) no-repeat center / cover fixed !important;'+
         '}'+
       '');
   } }
 
   function wallpaperButtonChanger(e) {
-    let num = GM_getValue('wallpaperImage');
+    let inp = $q('#inputThemer'),
+        num1 = parseInt(inp.value),
+        sum = parseInt(num1 + 1),
+        sub = parseInt(num1 - 1);
+    //e.preventDefault();
     switch (e.target.id) {
       case 'buttonThemer': case 'buttonUp':
-        num > 34 ? num = 0 : num = parseInt(num + 1);
+        if (inp.value > 42) inp.value = 0;
+        else inp.value = sum;
         break;
       case 'buttonDown':
-        num < 1 ? num = 35 : num = parseInt(num - 1);
-        break;
+        if (inp.value > 0) inp.value = sub;
+        else inp.value = 43;
     }
-    inpThemer.value = num;
-    GM_setValue('wallpaperImage', parseInt(num));
-    wallpaper(num);
+    GM_setValue('wallpaperImage', inp.value);
+    wallpaper(inp.value);
   }
 
   function wallpaperInputChanger(e) {
-    let inp = e.target.value;
-    GM_setValue('wallpaperImage', parseInt(inp));
-    wallpaper(inp);
+    let inp = $q('#inputThemer');
+    //e.preventDefault();
+    //if (inp.value > 43) inp.value = 0;
+    //else inp.value = inp.value;
+    if (inp.value > 43) inp.value = 43;
+    else if (inp.value < 0) inp.value = 0;
+    else inp.value = inp.value;
+    GM_setValue('wallpaperImage', inp.value);
+    wallpaper(inp.value);
   }
 
   function wallpaperSite() {
     let num = GM_getValue('wallpaperImage');
-    GM_setValue('imageSite', githubSite);
-    btnSites.innerHTML = 'GitHub';
     wallpaper(num);
   }
 
@@ -236,7 +244,7 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
-  if (!GM_getValue('imageSite')) GM_setValue('imageSite', githubSite);
+  //if (!GM_getValue('imageSite')) GM_setValue('imageSite', githubSite);
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
 
   initInterval = setInterval(() => {
@@ -255,8 +263,8 @@
       divThemer.appendChild(inpThemer);
       divThemer.appendChild(btnDown);
       body.insertBefore(divThemer, body.firstChild);
-      if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
-      else btnSites.innerHTML = 'Sonco';
+      //if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
+      //else btnSites.innerHTML = 'Sonco';
       if (signIn) signIn.click();
       else clearInterval(initInterval);
     //} catch(ex) {}
@@ -267,7 +275,7 @@
   GM_addStyle(''+
     'body#gsr {'+
     /*'  background:  url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) no-repeat center center fixed !important;'+*/
-    '  background:  url('+ GM_getValue('imageSite') + GM_getValue('wallpaperImage') +'.jpg) no-repeat center / cover fixed !important;'+
+    '  background:  url(https://raw.githubusercontent.com/Razzano/MyWallpaper/master/image' + GM_getValue('wallpaperImage') +'.jpg) no-repeat center / cover fixed !important;'+
     '}'+
     'body#gsr #dateTimeContainer {'+
     '  position: relative !important;'+
@@ -363,6 +371,7 @@
     '  top: 7px !important;'+
     '  width: 210px !important;'+
     '  z-index: 999 !important;'+
+    '  margin: 0 !important;'+
     '}'+
     'body#gsr #buttonThemer,'+
     'body#gsr #inputThemer {'+
@@ -375,10 +384,11 @@
     '  opacity: .7 !important;'+
     '}'+
     'body#gsr #inputThemer {'+
-    '  opacity: .8 !important;'+
-    '  pointer-events: none !important;'+
+    '  border: none !important;'+
+    /*'  margin: 0 -14px 0 0 !important;'+*/
+    /*'  pointer-events: none !important;'+*/
     '  text-align: center !important;'+
-    '  width: 28px !important;'+
+    /*'  width: 30px !important;'+*/
     '}'+
     'body#gsr #buttonUp,'+
     'body#gsr #buttonDown {'+
@@ -388,6 +398,13 @@
     '  cursor: pointer !important;'+
     '  position: relative !important;'+
     '  top: 6px !important;'+
+    '}'+
+    'body#gsr #buttonUp {'+
+    '  margin-right: -6px !important;'+
+    '  z-index: 2 !important;'+
+    '}'+
+    'body#gsr #buttonDown {'+
+    '  margin-left: -6px !important;'+
     '}'+
     'body#gsr #buttonThemer:hover,'+
     'body#gsr #inputThemer:hover,'+
@@ -408,14 +425,24 @@
     'body#gsr #searchform div:last-of-type:not(.Q3DXx) {'+
     '  background: transparent !important;'+
     '}'+
+    'body#gsr #searchform > div.NDnoQ.P3mIxe{'+
+    '  background: #000 !important;'+
+    '}'+
     'body#gsr > #searchform {'+
     '  margin-top: 0 !important;'+
     '  top: 0 !important;'+
+    '}'+
+    'body#gsr .RNNXgb {'+
+    '  border-radius: 24px !important;'+
+    '  margin: 0 !important;'+
+    /*'  padding: 6px 0 !important;'+*/
+    '  width: 90% !important;'+
     '}'+
     'body#gsr .minidiv .RNNXgb {'+
     '  border-radius: 24px !important;'+
     '  margin: 0 !important;'+
     '  padding: 6px 0 !important;'+
+    '  width: 90% !important;'+
     '}'+
     'body#gsr .GLcBOb {'+
     '  border-bottom: none !important;'+
