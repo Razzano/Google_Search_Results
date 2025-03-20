@@ -263,6 +263,9 @@
     'body#gsr {'+
     '  background:  url(' + githubSite + GM_getValue('wallpaperImage') +'.jpg) no-repeat center / cover fixed !important;'+
     '}'+
+    'body#gsr #searchform {'+
+    '  background: #000 !important;'+
+    '}'+
     'body#gsr #hdtb-sc {'+
     '  margin-top: 30px !important;'+
     '}'+
@@ -298,11 +301,11 @@
     '  top: 6px !important;'+
     '}'+
     'body#gsr #buttonUp {'+
-    '  margin-right: -6px !important;'+
+    '  margin: 0 -6px 0 0 !important;'+
     '  z-index: 2 !important;'+
     '}'+
     'body#gsr #buttonDown {'+
-    '  margin-left: -6px !important;'+
+    '  margin: 0 0 0 -6px !important;'+
     '}'+
     'body#gsr #buttonThemer:hover,'+
     'body#gsr #inputThemer:hover,'+
@@ -319,8 +322,7 @@
     '}'+
     'body#gsr #dateTimeContainer {'+
     '  position: fixed !important;'+
-    '  right: 10% !important;'+
-    '  width: 450px !important;'+
+    '  right: 11% !important;'+
     '  z-index: 999 !important;'+
     '}'+
     'body#gsr #gClock {'+
