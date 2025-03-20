@@ -322,7 +322,8 @@
     '}'+
     'body#gsr #dateTimeContainer {'+
     '  position: fixed !important;'+
-    '  right: 11% !important;'+
+    '  right: 5% !important;'+
+    '  width: 420px !important;'+
     '  z-index: 999 !important;'+
     '}'+
     'body#gsr #gClock {'+
@@ -364,6 +365,13 @@
     'body#gsr #dateTimeContainer > #dateTime:hover {'+
     '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
+    '}'+
+    'body#gsr #gb > div.gb_cd.gb_0.gb_I > div {'+
+    '  display: none !important;'+
+    '}'+
+    'body#gsr #gbwa > div,'+
+    'body#gsr #gb > div.gb_z {'+
+    '  padding: 0 !important;'+
     '}'+
     'body#gsr #gbwa > div > a:hover {'+
     '  background-color: #181A1B !important;'+
