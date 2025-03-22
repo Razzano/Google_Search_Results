@@ -63,8 +63,6 @@
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
         heartImg = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAqCAYAAADI3bkcAAAAAXNSR0IArs4c6QAAAcRJREFUWEftmLtuwjAYhU9K1SFqI1F1YWBEzAy8AwMvkCfMCzDwDgzMiJGBpSoSrTJUpa4c4TQ3O77SuEq2EOfk88nh/+0EEByvAHkQDYhjREkSiIZUr53jmCBJuLd8AngBuJqNF07jERkcjtIcX8sFnldrIfjbckHuV2tpzct4hOHhWNOs/XACyEBa9nfgBcCQ44xNzRJwawRaJtIErQvLHlWNSA78MZ+R781Ww9vyLUVoU1imfDef4XGzzVhz4DNAjGmvAhSaHjrR4jFEV9YM2CasrUk36VBo/4B9cZc5HvTALkNMq0TvcO9w2YHAVjdybGwmTxuSfxnuHXacDf9aMzXEh1iwZauT5aWLVJSWlz4sMWvAXYZmsKUdBz15D0NC0tTFG9XWDMIQT2maR7e2a+7aYqjobs1hZkNXoKuwXOAu5LkJVgj8l9A82P8HfOsuKPrclW9CZerNLVq3DGxrJIqTcV05RLktcih923XhtKyzSpFw6bSss9rANsudKqxShqt/TtNM68AaAZs4rQtrDKwDbQJrBVgF2hTWGnAGPZ0Q7PbNfWg6QbTbK5VQXkOzIiIqezZc1W4cMm28GBHbsFT7B9Aiho+ch+mcAAAAAElFTkSuQmCC',
         body = $q('body#gsr'),
-        signIn = $q('body#gsr a.gb_1.gb_2'),
-        headerMenus = $q('body#gsr div.Q3DXx'),
         divThemer = $c('div', {id: 'themerDiv'}),
         btnThemer = $c('button', {id: 'buttonThemer', innerHTML: wallpaperImageText, style: 'background-image: url(' + upButton + ') !important;', title: changeWallpaperTooltip, onclick: e => wallpaperButtonChanger(e)}),
         inpThemer = $c('input', {id: 'inputThemer', type: 'number', min: 0, max: 49, value: GM_getValue('wallpaperImage'), title: inputTooltip, oninput: e => wallpaperInputChanger(e)}),
@@ -132,9 +130,9 @@
       case 5: return w + space + bullet + space + mm + hyphen + dd + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03-01-2021 • 12:34 AM
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
-      // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 136;
-      case 9: return customFormat + 137;
+      // Delete "customFormat + 134/customFormat + 135" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
+      case 8: return customFormat + 134;
+      case 9: return customFormat + 135;
   } }
 
   function dateTimeDefault() {
@@ -187,7 +185,7 @@
   function getText() {
     let target;
     target = GM_getValue('linkTarget') !== '_blank' ? target = '_blank' : target = '_self';
-    return addRemoveText + target;
+    return addRemoveText + '"' + target + '"';;
   }
 
   function init() {
