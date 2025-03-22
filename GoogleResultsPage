@@ -34,7 +34,7 @@
         star = '*',
         customFormat = 'Add a custom format in script line ',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
-        addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format\n' + bullet + ' Alt + Left-click toggles link target between _blank & _self',
+        addRemoveText = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format\n' + bullet + ' Alt + Left-click toggle link target to ',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
         MonthNameAbbr = 'Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.',
@@ -140,7 +140,7 @@
   function dateTimeDefault() {
     dateTime.hidden = false;
     dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
-    dateTime.title = addRemove;
+    dateTime.title = getText();
     dateTimeTimer();
   }
 
@@ -175,12 +175,19 @@
     } else if (!e.shiftKey && e.ctrlKey && !e.altKey && e.button === 0) {
       int = GM_getValue('dateFormat') + 1;
       int < dateTimeFormatCount + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
-      dateTime.title = addRemove;
+      dateTime.title = getText();
     } else if (!e.shiftKey && !e.ctrlKey && e.altKey && e.button === 0) {
       target = GM_getValue('linkTarget') !== '_blank' ? GM_setValue('linkTarget', '_blank') : GM_setValue('linkTarget', '_self');
       searchLinksWhere(GM_getValue('linkTarget'));
     }
+    dateTime.title = getText();
     dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
+  }
+
+  function getText() {
+    let target;
+    target = GM_getValue('linkTarget') !== '_blank' ? target = '_blank' : target = '_self';
+    return addRemoveText + target;
   }
 
   function init() {
@@ -189,13 +196,13 @@
       dateTimeContainer.appendChild(btnClock);
       dateTimeContainer.appendChild(dateTime);
       body.insertBefore(dateTimeContainer, body.firstChild);
-      dateTime.title = addRemove;
       divThemer.appendChild(btnThemer);
       divThemer.appendChild(inpThemer);
       divThemer.appendChild(btnDown);
       body.insertBefore(divThemer, body.firstChild);
       if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
       else {dateTime.hidden = true; clearInterval(clockInterval)}
+      dateTime.title = getText();
       searchLinksWhere();
       wallpaper(GM_getValue('wallpaperImage'));
     } catch(ex) {}
@@ -210,6 +217,7 @@
   function searchLinksWhere() {
     let links = $q('body#gsr a', true);
     for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linkTarget'));
+    getText();
   }
 
   function wallpaper(e) {
