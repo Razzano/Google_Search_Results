@@ -282,7 +282,8 @@
     'body#gsr {'+
     '  background:  url(' + githubSite + GM_getValue('wallpaperImage') +'.jpg) no-repeat center / cover fixed !important;'+
     '}'+
-    'body#gsr div.logo {'+
+    'body#gsr div.logo,'+
+    'body#gsr picture > img {'+
     '  display: none !important;'+
     '}'+
     'body#gsr #cnt > div.JryvJ > div {'+
@@ -295,15 +296,12 @@
     '  margin-top: 30px !important;'+
     '}'+
     'body#gsr #themerDiv {'+
-    '  background: #000 !important;'+
+    '  background: transparent !important;'+
     '  color: #FFF !important;'+
-    '  left: -24px !important;'+
-    '  height: 60px !important;'+
-    '  padding-top: 5px !important;'+
+    '  left: -20px !important;'+
     '  position: fixed !important;'+
-    '  top: 0 !important;'+
-    '  width: 210px !important;'+
-    '  z-index: 999 !important;'+
+    '  top: 5px !important;'+
+    '  z-index: 900 !important;'+
     '}'+
     'body#gsr #buttonThemer,'+
     'body#gsr #inputThemer {'+
@@ -316,35 +314,28 @@
     '  background-color: transparent !important;'+
     '  background-repeat: no-repeat !important;'+
     '  background-position: right !important;'+
-    '  margin-right: -12px !important;'+
+    '  margin-right: -8px !important;'+
     '  position: relative !important;'+
-    '  width: 160px !important;'+
+    '  width: 144px !important;'+
     '  z-index: 2 !important;'+
     '}'+
     'body#gsr #inputThemer {'+
     '  background: transparent !important;'+
-    '  margin: 0 4px !important;'+
+    '  margin: 0 !important;'+
+    '  width: 46px !important;'+
     '  text-align: center !important;'+
     '}'+
-    'body#gsr #buttonUp,'+
     'body#gsr #buttonDown {'+
     '  background: transparent !important;'+
     '  color: #FFF !important;'+
     '  opacity: .7 !important;'+
     '  cursor: pointer !important;'+
+    '  margin: 0 0 0 -8px !important;'+
     '  position: relative !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '  top: 6px !important;'+
     '}'+
-    'body#gsr #buttonUp {'+
-    '  margin: 0 -12px 0 0 !important;'+
-    '  z-index: 2 !important;'+
-    '}'+
-    'body#gsr #buttonDown {'+
-    '  margin: 0 0 0 -12px !important;'+
-    '}'+
     'body#gsr #buttonThemer:hover,'+
-    'body#gsr #buttonUp:hover,'+
     'body#gsr #buttonDown:hover {'+
     '  opacity: 1 !important;'+
     '  cursor: pointer !important;'+
