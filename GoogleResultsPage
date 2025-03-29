@@ -189,13 +189,13 @@
   function init() {
     window.removeEventListener('load', () => init());
     try {
-      dateTimeContainer.appendChild(btnClock);
-      dateTimeContainer.appendChild(dateTime);
-      body.insertBefore(dateTimeContainer, body.firstChild);
       divThemer.appendChild(btnThemer);
       divThemer.appendChild(inpThemer);
       divThemer.appendChild(btnDown);
-      body.insertBefore(divThemer, body.firstChild);
+      insertAfter(divThemer, body.firstChild);
+      dateTimeContainer.appendChild(btnClock);
+      dateTimeContainer.appendChild(dateTime);
+      insertAfter(dateTimeContainer, divThemer);
       if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
       else {dateTime.hidden = true; clearInterval(clockInterval)}
       dateTime.title = getText();
