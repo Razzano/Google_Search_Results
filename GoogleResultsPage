@@ -61,6 +61,7 @@
         downButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAuklEQVR42mNkoAFgHDWUPob+BwJGICCkGZc6XIamAamZ+AwGGQik0oFKZhFrKEj8LRALYjMYauB7IBYGSv8nOkyB+jyA1HawIiSDoQaCgCdQeAfRYYpkwBkgZQwzGMnAs0CuCS59hAzVB1JzYQbDDATiZKChF8kyFGrwSiAVhiS0CmhgOD49xBgqCaSuArEgAyRytIGGPqfIUKjB7UCqAog7gAZWElJPdI4CGrwfaKAjMWqHeN4fOYYCALmCRxW5rmXrAAAAAElFTkSuQmCC',
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
         body = $q('body#gsr'),
+        div1 = $q('#searchform > div.NDnoQ.P3mIxe'),
         divThemer = $c('div', {id: 'themerDiv'}),
         btnThemer = $c('button', {id: 'buttonThemer', innerHTML: wallpaperImageText, style: 'background-image: url(' + upButton + ') !important;', title: changeWallpaperTooltip, onclick: e => wallpaperButtonChanger(e)}),
         inpThemer = $c('input', {id: 'inputThemer', type: 'number', min: 0, max: 50, value: GM_getValue('wallpaperImage'), title: inputTooltip, oninput: e => wallpaperInputChanger(e)}),
@@ -128,9 +129,9 @@
       case 5: return w + space + bullet + space + mm + hyphen + dd + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03-01-2021 • 12:34 AM
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
-      // Delete "customFormatText + 132" or "customFormatText + 133" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 132;
-      case 9: return customFormat + 133;
+      // Delete "customFormatText + 133" or "customFormatText + 134" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
+      case 8: return customFormat + 133;
+      case 9: return customFormat + 134;
   } }
 
   function dateTimeDefault() {
@@ -192,10 +193,10 @@
       divThemer.appendChild(btnThemer);
       divThemer.appendChild(inpThemer);
       divThemer.appendChild(btnDown);
-      insertAfter(divThemer, body.firstChild);
+      div1.insertBefore(divThemer, div1.firstChild);
       dateTimeContainer.appendChild(btnClock);
       dateTimeContainer.appendChild(dateTime);
-      insertAfter(dateTimeContainer, divThemer);
+      insertAfter(dateTimeContainer, div1.firstChild.nextSibling);
       if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
       else {dateTime.hidden = true; clearInterval(clockInterval)}
       dateTime.title = getText();
@@ -347,8 +348,7 @@
     '  display: none !important;'+
     '}'+
     'body#gsr #dateTimeContainer {'+
-    '  position: fixed !important;'+
-    '  right: 100px !important;'+
+    '  position: relative !important;'+
     '  width: 415px !important;'+
     '  z-index: 999 !important;'+
     '}'+
