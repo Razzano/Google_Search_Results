@@ -19,7 +19,6 @@
         timerLong = 10000,
         timerShort = 1000,
         dateTimeFormatCount = 9,
-        githubSite = 'https://raw.githubusercontent.com/Razzano/MyWallpaper/master/image',
         am = 'AM',
         pm = 'PM',
         arrow = '\u21D2',
@@ -56,6 +55,7 @@
         wallpaperImageText = 'Wallpaper image',
         changeWallpaperTooltip = 'Change Wallpaper',
         inputTooltip = '0 - 51',
+        githubSite = 'https://raw.githubusercontent.com/Razzano/MyWallpaper/master/image',
         imgCalendar = 'https://raw.githubusercontent.com/Razzano/My_Images/master/imageCalendar.png',
         imgClock = 'https://raw.githubusercontent.com/Razzano/My_Images/master/imageClock32.png',
         downButton = 'https://raw.githubusercontent.com/Razzano/My_Images/master/imageDownArrow.png',
@@ -63,11 +63,11 @@
         body = $q('body#gsr'),
         div1 = $q('#searchform > div.NDnoQ.P3mIxe'),
         divThemer = $c('div', {id: 'themerDiv'}),
-        btnThemer = $c('button', {id: 'buttonThemer', innerHTML: wallpaperImageText, style: 'background-image: url(' + upButton + ') !important;', title: changeWallpaperTooltip, onclick: e => wallpaperButtonChanger(e)}),
+        btnThemer = $c('button', {id: 'buttonThemer', innerHTML: wallpaperImageText, title: changeWallpaperTooltip, onclick: e => wallpaperButtonChanger(e)}),
         inpThemer = $c('input', {id: 'inputThemer', type: 'number', value: GM_getValue('wallpaperImage'), title: inputTooltip, oninput: e => wallpaperInputChanger(e)}),
         btnDown = $c('button', {id: 'buttonDown', style: 'background-image: url(' + downButton + ') !important;', title: '', onclick: e => wallpaperButtonChanger(e)}),
         dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
-        btnClock = $c('button', {id: 'gClock', style: 'background: url('+ imgCalendar +') no-repeat center', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
+        imageCalendar = $c('img', {id: 'gCalendar', src: imgCalendar, title: hideShow, onmousedown: e => dateTimeToggle(e)}),
         dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)});
 
   let initInterval,
@@ -194,7 +194,7 @@
       divThemer.appendChild(inpThemer);
       divThemer.appendChild(btnDown);
       div1.insertBefore(divThemer, div1.firstChild);
-      dateTimeContainer.appendChild(btnClock);
+      dateTimeContainer.appendChild(imageCalendar);
       dateTimeContainer.appendChild(dateTime);
       insertAfter(dateTimeContainer, div1.firstChild.nextSibling);
       if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
@@ -299,7 +299,7 @@
     'body#gsr #themerDiv {'+
     '  background: transparent !important;'+
     '  color: #FFF !important;'+
-    '  left: -8px !important;'+
+    '  left: 8px !important;'+
     '  position: fixed !important;'+
     '  top: 5px !important;'+
     '  z-index: 900 !important;'+
@@ -317,13 +317,13 @@
     '  background-position: right !important;'+
     '  margin: 0 !important;'+
     '  position: relative !important;'+
-    '  width: 144px !important;'+
-    '  z-index: 2 !important;'+
+    '  top: -1px !important;'+
+    '  width: 115px !important;'+
     '}'+
     'body#gsr #inputThemer {'+
     '  background: transparent !important;'+
     '  margin: 0 !important;'+
-    '  width: 22px !important;'+
+    '  width: 20px !important;'+
     '  text-align: center !important;'+
     '}'+
     'body#gsr #buttonDown {'+
@@ -332,12 +332,12 @@
     '  color: #FFF !important;'+
     '  opacity: .7 !important;'+
     '  cursor: pointer !important;'+
-    '  height: 16px !important;'+
+    '  height: 20px !important;'+
     '  margin: 0 !important;'+
     '  position: relative !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
-    '  top: 1px !important;'+
-    '  width: 16px !important;'+
+    '  top: 4px !important;'+
+    '  width: 21px !important;'+
     '}'+
     'body#gsr #buttonThemer:hover,'+
     'body#gsr #buttonDown:hover {'+
@@ -355,7 +355,7 @@
     '  width: 415px !important;'+
     '  z-index: 999 !important;'+
     '}'+
-    'body#gsr #gClock {'+
+    'body#gsr #gCalendar {'+
     '  border: none !important;'+
     '  cursor: pointer !important;'+
     '  filter: grayscale(1) brightness(.65) !important;'+
@@ -367,16 +367,16 @@
     '  position: relative !important;'+
     '  top: -14px !important;'+
     '}'+
-    'body#gsr #gClock:hover + #dateTime {'+
+    'body#gsr #gCalendar:hover + #dateTime {'+
     '  background: #900 !important;'+
     '  border-color: #C00 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    'body#gsr #dateTimeContainer:hover > #gClock {'+
+    'body#gsr #dateTimeContainer:hover > #gCalendar {'+
     '  filter: none !important;'+
     '  opacity: .7 !important;'+
     '}'+
-    'body#gsr #dateTimeContainer:hover > #gClock:hover {'+
+    'body#gsr #dateTimeContainer:hover > #gCalendar:hover {'+
     '  opacity: 1 !important;'+
     '}'+
     'body#gsr #dateTimeContainer > #dateTime {'+
