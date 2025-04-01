@@ -58,14 +58,14 @@
         githubSite = 'https://raw.githubusercontent.com/Razzano/MyWallpaper/master/image',
         imgCalendar = 'https://raw.githubusercontent.com/Razzano/My_Images/master/imageCalendar.png',
         imgClock = 'https://raw.githubusercontent.com/Razzano/My_Images/master/imageClock32.png',
-        downButton = 'https://raw.githubusercontent.com/Razzano/My_Images/master/imageDownArrow.png',
-        upButton = 'https://raw.githubusercontent.com/Razzano/My_Images/master/imageUpArrow.png',
+        downArrow = 'https://raw.githubusercontent.com/Razzano/My_Images/master/downArrow.png',
+        upArrow = 'https://raw.githubusercontent.com/Razzano/My_Images/master/upArrow.png',
         body = $q('body#gsr'),
         div1 = $q('#searchform > div.NDnoQ.P3mIxe'),
         divThemer = $c('div', {id: 'themerDiv'}),
         btnThemer = $c('button', {id: 'buttonThemer', innerHTML: wallpaperImageText, title: changeWallpaperTooltip, onclick: e => wallpaperButtonChanger(e)}),
         inpThemer = $c('input', {id: 'inputThemer', type: 'number', value: GM_getValue('wallpaperImage'), title: inputTooltip, oninput: e => wallpaperInputChanger(e)}),
-        btnDown = $c('button', {id: 'buttonDown', style: 'background-image: url(' + downButton + ') !important;', title: '', onclick: e => wallpaperButtonChanger(e)}),
+        btnDown = $c('button', {id: 'buttonDown', style: 'background-image: url(' + downArrow + ') !important;', title: '', onclick: e => wallpaperButtonChanger(e)}),
         dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
         imageCalendar = $c('img', {id: 'gCalendar', src: imgCalendar, title: hideShow, onmousedown: e => dateTimeToggle(e)}),
         dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)});
@@ -332,12 +332,12 @@
     '  color: #FFF !important;'+
     '  opacity: .7 !important;'+
     '  cursor: pointer !important;'+
-    '  height: 20px !important;'+
+    '  height: 10px !important;'+
     '  margin: 0 !important;'+
     '  position: relative !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
-    '  top: 4px !important;'+
-    '  width: 21px !important;'+
+    '  top: 0 !important;'+
+    '  width: 11px !important;'+
     '}'+
     'body#gsr #buttonThemer:hover,'+
     'body#gsr #buttonDown:hover {'+
