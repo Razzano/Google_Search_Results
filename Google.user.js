@@ -301,7 +301,7 @@
     '  color: #FFF !important;'+
     '  left: 8px !important;'+
     '  position: fixed !important;'+
-    '  top: 5px !important;'+
+    '  top: 10px !important;'+
     '  z-index: 900 !important;'+
     '}'+
     'body#gsr #buttonThemer,'+
